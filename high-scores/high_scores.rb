@@ -1,23 +1,22 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 # class for managing arcade high-scores
 class HighScores
   attr_reader :scores
+
+  extend Forwardable
+
+  def_delegator :scores, :last, :latest
+  def_delegator :scores, :max, :personal_best
 
   def initialize(scores)
     @scores = scores
   end
 
-  def latest
-    scores.last
-  end
-
-  def personal_best
-    scores.max
-  end
-
   def personal_top_three
-    scores.sort.reverse.take(3)
+    personal_best(3)
   end
 
   def latest_is_personal_best?
