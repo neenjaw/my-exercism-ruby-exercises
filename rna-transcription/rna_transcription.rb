@@ -10,17 +10,14 @@ module Complement
     strand.chars.map { |c| translate(c) }.join
   end
 
-  PAIRS = {
+  private_class_method def self.translate(char)
+    PAIRS[char] || char
+  end
+
+  private_constant PAIRS = {
     'G' => 'C',
     'C' => 'G',
     'T' => 'A',
     'A' => 'U'
   }.freeze
-
-  def self.translate(char)
-    complement = PAIRS[char]
-    return complement unless complement.nil?
-
-    char
-  end
 end
