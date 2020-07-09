@@ -15,7 +15,7 @@ end
 
 class YearTest < Minitest::Test
   def test_year_not_divisible_by_4_common_year
-    # skip
+    skip
     refute Year.leap?(2015), "Expected 'false', 2015 is not a leap year."
   end
 
@@ -25,7 +25,7 @@ class YearTest < Minitest::Test
   end
 
   def test_year_divisible_by_100_not_divisible_by_400_common_year
-    # skip
+    skip
     refute Year.leap?(2100), "Expected 'false', 2100 is not a leap year."
   end
 
@@ -35,7 +35,7 @@ class YearTest < Minitest::Test
   end
 
   def test_year_divisible_by_200_not_divisible_by_400_common_year
-    # skip
+    skip
     refute Year.leap?(1800), "Expected 'false', 1800 is not a leap year."
   end
 end

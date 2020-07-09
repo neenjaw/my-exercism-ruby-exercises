@@ -8,7 +8,7 @@ class SpaceAge
 
   SECONDS_PER_EARTH_YEAR = 31_557_600.0
 
-  RELATIVE_PERIOD = {
+  PLANET_YEAR_PER_EARTH_YEAR = {
     'earth' => 1,
     'mercury' => 0.2408467,
     'venus' => 0.61519726,
@@ -20,12 +20,12 @@ class SpaceAge
   }.freeze
 
   private_constant :SECONDS_PER_EARTH_YEAR
-  private_constant :RELATIVE_PERIOD
+  private_constant :PLANET_YEAR_PER_EARTH_YEAR
 
-  # Create the `on_<planet>` methods
-  RELATIVE_PERIOD.each_pair do |planet, period|
+  # Create the `on_<planet>` methods to determine age on another planet
+  PLANET_YEAR_PER_EARTH_YEAR.each_pair do |planet, year_relative_to_earth_year|
     define_method "on_#{planet}" do
-      @age / 31_557_600.0 / period
+      @age / SECONDS_PER_EARTH_YEAR / year_relative_to_earth_year
     end
   end
 end

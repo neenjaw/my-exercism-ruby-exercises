@@ -1,16 +1,6 @@
-# frozen_string_literal: true
-
-# Determine if supplied year is a leap year.
 module Year
+  # Determine if supplied year is a leap year.
   def self.leap?(year)
-    if !(year % 4).zero?
-      false
-    elsif (year % 400).zero?
-      true
-    elsif (year % 100).zero?
-      false
-    else
-      true
-    end
+    (year % 4).zero? && ((year % 100).nonzero? || (year % 400).zero?)
   end
 end
