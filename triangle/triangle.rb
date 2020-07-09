@@ -1,8 +1,4 @@
-# frozen_string_literal: true
-
-# Class for classifying types of triangles based on the length of their sides
-#   Side lengths are tested against their uniqueness, e.g.:
-#     - equilateral triangles have 1 unique side length
+# Class for representing a geometric triangle
 class Triangle
   attr_reader :sides
 
@@ -11,6 +7,10 @@ class Triangle
     @sides = [] if invalid?
   end
 
+  #   Side lengths are tested against their uniqueness, e.g.:
+  #     - equilateral triangles have 1 unique side length
+  #     - isosceles triangles have 1 or 2 unique side lengths
+  #     - scalene triangles have 3 unique side lengths
   def equilateral?
     sides.uniq.size.eql?(1)
   end

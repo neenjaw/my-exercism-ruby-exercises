@@ -2,13 +2,21 @@
 
 # module for working with DNA/RNA strands
 module Complement
-  # def self.of_dna(strand)
-  #   strand.tr('GCTA', 'CGAU')
-  # end
-
   def self.of_dna(strand)
-    strand.chars.map { |char| PAIRS[char] || char }.join
+    strand.chars.map(&translate).join
   end
+
+  # Lambda
+  # def self.translate
+  #   ->(char) { PAIRS[char] || char }
+  # end
+  # private_class_method :translate
+
+  # Proc
+  def self.translate
+    proc { |char| PAIRS[char] || char }
+  end
+  private_class_method :translate
 
   PAIRS = {
     'G' => 'C',

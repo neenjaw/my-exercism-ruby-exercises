@@ -2,11 +2,12 @@
 
 # Class for returning a person's age in years relative to the year on that planet
 class SpaceAge
-  def initialize(seconds)
-    @age = seconds
+  def initialize(age_in_seconds)
+    @age = age_in_seconds
   end
 
   SECONDS_PER_EARTH_YEAR = 31_557_600.0
+  private_constant :SECONDS_PER_EARTH_YEAR
 
   PLANET_YEAR_PER_EARTH_YEAR = {
     'earth' => 1,
@@ -18,8 +19,6 @@ class SpaceAge
     'uranus' => 84.016846,
     'neptune' => 164.79132
   }.freeze
-
-  private_constant :SECONDS_PER_EARTH_YEAR
   private_constant :PLANET_YEAR_PER_EARTH_YEAR
 
   # Create the `on_<planet>` methods to determine age on another planet
