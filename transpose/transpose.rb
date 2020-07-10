@@ -31,7 +31,7 @@ module Transpose
 
     ##
     # transpose_row_to_column
-    # for each character at (x, y), place it at (y, x)
+    # for each character at (x, y) in the 2d array, place it at (y, x)
     def transpose_row_to_column(row_pair, arr)
       row, row_index = row_pair
 
