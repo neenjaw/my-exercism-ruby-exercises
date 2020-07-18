@@ -8,16 +8,7 @@ class Phrase
   def word_count
     phrase
       .downcase
-      .split(/[^'[:alnum:]]+/)
-      .delete_if(&:empty?)
-      .map { |word| trim_quotes(word) }
+      .scan(/\b[[:alnum:]']+\b/)
       .tally
-  end
-
-  private
-
-  def trim_quotes(word)
-    quote = %(')
-    word.delete_prefix(quote).delete_suffix(quote)
   end
 end
